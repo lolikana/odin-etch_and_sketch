@@ -6,16 +6,7 @@
 
 #### Project : Etch and Sketch
 
-Second javascript project using everything I learned until now:
-     <ul>
-      <li>Variables</li>
-      <li>Numbers</li>
-      <li>Strings</li>
-      <li>Conditionals</li>
-      <li>Functions</li>
-      <li>Loops</li>
-      <li>DOM</li>
-     </ul>
+Second javascript project: HTML, CSS, JS
      
 Memo :
 - [x] 
