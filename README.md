@@ -9,10 +9,10 @@
 Second javascript project: HTML, CSS, JS
 
 Memo :
-- [x]
+- [ ] none
 
 Extra :
-- [x]
+- [ ] none
 
 Credits :
 
