@@ -7,14 +7,14 @@
 #### Project : Etch and Sketch
 
 Second javascript project: HTML, CSS, JS
-     
+
 Memo :
-- [x] 
+- [x]
 
 Extra :
-- [x] 
+- [x]
 
-Credits : 
+Credits :
 
 
 
