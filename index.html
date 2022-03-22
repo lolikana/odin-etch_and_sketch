@@ -9,23 +9,43 @@
 </head>
 
 <body>
-  <div id='div-pixel-size'>
-    <label for='pixel-size'>Pixel Size</label>
-    <input type='range' id='pixel-size' name='pixel-size' min='1' max='6' step='1' value='4'/>
-    <output for='pixel-size' class='pixel-output'></output>
 
-    <br />
+  <div class="container">
+    <div class="title">
+      <h1>Project JS 3 - Etch & Sketch</h1>
+    </div>
 
-  </div>
-  <div id='div-btn'>
-    <button id='sixteen-btn'>16 x 16</button>
-    <button id='thirty-two-btn'>32 x 32</button>
-  </div>
+    <div class="buttons">
+      <div>
+        <div>
+          <button id="draw-btn">DRAW</button>
+        </div>
+        <div>
+          <button id="rainbow-btn">RAINBOW</button>
+        </div>
+        <div>
+          <button id="eraser-btn">ERASER</button>
+        </div>
+        <div>
+          <button id="clear-btn">CLEAR</button>
+        </div>
+        <div id='div-size-btn'>
+          <button id='sixteen-btn'>16 x 16</button>
+          <button id='thirty-two-btn'>32 x 32</button>
+        </div>
+        <div id='div-pixel-size'>
+          <label for='pixel-size'>Pixel Size</label>
+          <input type='range' id='pixel-size' name='pixel-size' min='1' max='6' step='1' value='4'/>
+          <output for='pixel-size' class='pixel-output'></output>
+        </div>
+      </div>
+    </div>
 
-  <br />
+    <div class="scratch-div">
+      <div id='square'>
 
-  <div id='square'>
-
+      </div>
+    </div>
   </div>
 
 </body>
