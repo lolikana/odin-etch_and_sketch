@@ -6,7 +6,7 @@
 
 .container {
   display: grid;
-  grid-template: 50px repeat(2, 1fr) / repeat(3, 1fr);
+  grid-template: 50px 512px / 1fr 512px;
   grid-column-gap: 0;
   grid-row-gap: 0;
   border: 1px solid black;
@@ -16,21 +16,31 @@
 }
 
 .title {
-  grid-area: 1 / 1 / 2 / 4;
+  grid-area: 1 / 1 / 2 / 3;
   text-align: center;
 }
 
-.buttons {
-  grid-area: 2 / 1 / 4 / 2;
-  padding: 10px;
-}
-
-.buttons > div {
-  height: 100%;
+.btn {
+  grid-area: 2 / 1 / 3 / 2;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+}
+
+#div-size-btn {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+#div-range-size {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 button {
@@ -38,19 +48,24 @@ button {
 }
 
 .scratch-div {
-  grid-area: 2 / 2 / 4 / 4; 
+  grid-area: 2 / 2 / 3 / 3; 
+  width: 512px;
+  height: 512px;
   display: flex;
-  justify-content: center;
+  /* border: 1px solid grey; */
+  outline: solid grey;
 }
 
 #square {
   display: flex;
   flex-flow: row wrap;
-  width: 512px;
-  height: 512px;
-  outline-style: solid;
 }
 
 #square div {
-  border: 1px solid black;
+  border-top: 1px solid grey;
+  border-left: 1px solid grey;
 }
+
+/* .square-div:hover {
+  background-color: rgba(0, 0, 0, .5);
+} */

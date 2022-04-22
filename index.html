@@ -2,10 +2,10 @@
 <html>
 
 <head>
-  <meta charset='utf-8' />
+  <meta charset="utf-8" />
   <title>Project JS - Etch & Sketch</title>
-  <link rel='stylesheet' href='style.css' />
-  <script src='script.js' defer></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -15,34 +15,35 @@
       <h1>Project JS 3 - Etch & Sketch</h1>
     </div>
 
-    <div class="buttons">
-      <div>
+    <div class="btn">
         <div>
-          <button id="draw-btn">DRAW</button>
-        </div>
-        <div>
-          <button id="rainbow-btn">RAINBOW</button>
+          <button id="draw-btn" class="btn-set-color">DRAW</button>
         </div>
         <div>
-          <button id="eraser-btn">ERASER</button>
+          <button id="rainbow-btn" class="btn-set-color">RAINBOW</button>
         </div>
         <div>
-          <button id="clear-btn">CLEAR</button>
+          <button id="eraser-btn" class="btn-set-color">ERASER</button>
         </div>
-        <div id='div-size-btn'>
-          <button id='sixteen-btn'>16 x 16</button>
-          <button id='thirty-two-btn'>32 x 32</button>
+        <div>
+          <button id="reset-btn">RESET</button>
         </div>
-        <div id='div-pixel-size'>
-          <label for='pixel-size'>Pixel Size</label>
-          <input type='range' id='pixel-size' name='pixel-size' min='1' max='6' step='1' value='4'/>
-          <output for='pixel-size' class='pixel-output'></output>
+
+        <div id="div-size-btn">
+            <button class="size-btn"><span class="size-span">16</span> x 16</button>
+            <button class="size-btn"><span class="size-span">32</span> x 32</button>
+            <button class="size-btn"><span class="size-span">64</span> x 64</button>
         </div>
-      </div>
+
+        <div id="div-range-size">
+          <label for="range-size">Pixel Size</label>
+          <input type="range" id="range-size" name="range-size" min="0" max="4" step="1" value="0">
+          <output for="range-size" class="range-output"></output>
+        </div>
     </div>
 
     <div class="scratch-div">
-      <div id='square'>
+      <div id="square">
 
       </div>
     </div>
