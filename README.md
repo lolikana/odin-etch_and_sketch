@@ -9,7 +9,7 @@
 Second javascript project: HTML, CSS, JS
 
 Memo :
-- [ ] none
+- [ ] setup custom step for range slide (step = actual value**2)
 
 Extra :
 - [ ] none
