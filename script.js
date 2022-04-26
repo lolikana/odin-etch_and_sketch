@@ -143,12 +143,12 @@ selectEraserBtn.addEventListener(
 );
 
 const selectRaindowBtn = document.getElementById('rainbow-btn');
-const randomColor = Math.floor(Math.random() * 16777215).toString(16);
 
 selectRaindowBtn.addEventListener(
   'click',
   (rainbowBg = () => {
     for (let i = 0; i < getSquareDiv.length; i++) {
+      const randomColor = Math.floor(Math.random() * 16777215).toString(16);
       getSquareDiv[i].addEventListener(
         'mousedown',
         (setBackground = () => {
