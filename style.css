@@ -66,6 +66,6 @@ button {
   border-left: 1px solid grey;
 }
 
-/* .square-div:hover {
+.square-div:hover {
   background-color: rgba(0, 0, 0, .5);
-} */
+}

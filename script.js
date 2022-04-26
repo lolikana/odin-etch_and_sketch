@@ -1,8 +1,8 @@
 const canvasSize = 512;
 const square = document.querySelector('#square');
 
-const createElementDiv = (sizeValue) => {
-  for (let i = 0; i < (sizeValue * sizeValue); i++) {
+const createElementDiv = sizeValue => {
+  for (let i = 0; i < sizeValue * sizeValue; i++) {
     const createDiv = document.createElement('div');
     createDiv.style.width = canvasSize / sizeValue + 'px';
     createDiv.style.height = canvasSize / sizeValue + 'px';
@@ -10,36 +10,37 @@ const createElementDiv = (sizeValue) => {
     square.appendChild(createDiv)[i];
   }
 
-  changeBackgroundOnClick();
-}
+  // changeBgStyle();
+};
 
 // default size
 
-createElementDiv(4)
+createElementDiv(4);
 
-// Active btn reset canvas // 
+// Active btn reset canvas //
 
 const selectClearBtn = document.getElementById('reset-btn');
 
-selectClearBtn.addEventListener('click', function() {
+selectClearBtn.addEventListener('click', function () {
   document.getElementById('square').textContent = '';
-
   createElementDiv(8);
-})
+});
 
 // Select size btn and clear canvas and create div //
 
 const selectSizeBtn = document.getElementsByClassName('size-btn');
 
 for (let i = 0; i < selectSizeBtn.length; i++) {
-    selectSizeBtn[i].addEventListener('click', setSizeDiv = () => {
-    const selectSizeValue = document.getElementsByClassName('size-span')[i].innerHTML;
-    
-    document.getElementById('square').textContent = '';
-    
-    createElementDiv(selectSizeValue);
-  })
-};
+  selectSizeBtn[i].addEventListener(
+    'click',
+    (setSizeDiv = () => {
+      const selectSizeValue =
+        document.getElementsByClassName('size-span')[i].innerHTML;
+      document.getElementById('square').textContent = '';
+      createElementDiv(selectSizeValue);
+    })
+  );
+}
 
 // Range slider update size //
 
@@ -53,7 +54,7 @@ for (let i = 0; i < selectSizeBtn.length; i++) {
 // //   output.textContent = rangePixelSize.value + ' x ' + rangePixelSize.value;
 
 // //   document.getElementById('square').textContent = '';
-  
+
 // //   createElementDiv(getRangeValue);
 // // });
 
@@ -63,44 +64,106 @@ const output = document.querySelector('.range-output');
 
 let customRangeValues = [4, 8, 16, 32, 64];
 
-rangePixelSize.oninput = function(e){
-  output.textContent = customRangeValues[this.value]+ ' x ' + customRangeValues[this.value];
+rangePixelSize.oninput = function (e) {
+  output.textContent =
+    customRangeValues[this.value] + ' x ' + customRangeValues[this.value];
   rangePixelSize.max = customRangeValues.length - 1;
 };
 
-rangePixelSize.oninput()
+rangePixelSize.oninput();
 
-rangePixelSize.addEventListener('input', function() {
+rangePixelSize.addEventListener('input', function () {
   const getRangeValue = customRangeValues[this.value];
-
   document.getElementById('square').textContent = '';
-
   createElementDiv(getRangeValue);
 });
 
-// change background div when clicked // 
-let colorTrigger = false 
-
-square.addEventListener('mousedown', () => {      
-    colorTrigger = true;  
-});   
-
-square.addEventListener('mouseup', () => {      
-    colorTrigger = false;  
+// Function drawing
+let colorTrigger = false;
+square.addEventListener('mousedown', () => {
+  colorTrigger = true;
 });
 
-function changeBackgroundOnClick() {
-  const getSquareDiv = document.getElementsByClassName('square-div');
-  
-  for (let i = 0; i < getSquareDiv.length; i++) {
-    getSquareDiv[i].addEventListener('mousedown', setBackground = () => {
-        getSquareDiv[i].style.backgroundColor = 'red';
-    });
+// prevent keep mouseup = false after mouseout of square
+// then mouseup and go back to squareDiv
+const selectBody = document.querySelector('body');
+selectBody.addEventListener('mouseup', () => {
+  colorTrigger = false;
+});
 
-    getSquareDiv[i].addEventListener('mousemove', setBackground = () => {
-      if (colorTrigger === true ) {
-        getSquareDiv[i].style.backgroundColor = 'black';
-      }
-    });   
-  }
-}
+const getSquareDiv = document.getElementsByClassName('square-div');
+const selectDrawBtn = document.getElementById('draw-btn');
+
+selectDrawBtn.addEventListener(
+  'click',
+  (drawBg = () => {
+    for (let i = 0; i < getSquareDiv.length; i++) {
+      getSquareDiv[i].addEventListener(
+        'mousedown',
+        (setBackground = () => {
+          getSquareDiv[i].style.backgroundColor = 'black';
+        })
+      );
+
+      getSquareDiv[i].addEventListener(
+        'mousemove',
+        (setBackground = () => {
+          if (colorTrigger === true) {
+            getSquareDiv[i].style.backgroundColor = 'black';
+          }
+        })
+      );
+    }
+  })
+);
+
+// function Eraser //
+const selectEraserBtn = document.getElementById('eraser-btn');
+selectEraserBtn.addEventListener(
+  'click',
+  (eraseBg = () => {
+    for (let i = 0; i < getSquareDiv.length; i++) {
+      getSquareDiv[i].addEventListener(
+        'mousedown',
+        (setBackground = () => {
+          getSquareDiv[i].style.backgroundColor = '';
+        })
+      );
+
+      getSquareDiv[i].addEventListener(
+        'mousemove',
+        (setBackground = () => {
+          if (colorTrigger === true) {
+            getSquareDiv[i].style.backgroundColor = '';
+          }
+        })
+      );
+    }
+  })
+);
+
+const selectRaindowBtn = document.getElementById('rainbow-btn');
+const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+
+selectRaindowBtn.addEventListener(
+  'click',
+  (rainbowBg = () => {
+    for (let i = 0; i < getSquareDiv.length; i++) {
+      getSquareDiv[i].addEventListener(
+        'mousedown',
+        (setBackground = () => {
+          getSquareDiv[i].style.backgroundColor = '#' + randomColor;
+        })
+      );
+
+      getSquareDiv[i].addEventListener(
+        'mousemove',
+        (setBackground = () => {
+          if (colorTrigger === true) {
+            getSquareDiv[i].style.backgroundColor = '#' + randomColor;
+          }
+        })
+      );
+    }
+  })
+);
