@@ -1,4 +1,5 @@
 const canvasSize = 512;
+const defaultSize = 16;
 const square = document.querySelector('#square');
 
 const createElementDiv = sizeValue => {
@@ -9,150 +10,122 @@ const createElementDiv = sizeValue => {
     createDiv.classList.add('square-div');
     square.appendChild(createDiv)[i];
   }
-
   // changeBgStyle();
 };
 
 // default size
+createElementDiv(defaultSize);
 
-createElementDiv(4);
-
-// Active btn reset canvas //
-
+// Reset Button
 const selectClearBtn = document.getElementById('reset-btn');
 
 selectClearBtn.addEventListener('click', function () {
-  document.getElementById('square').textContent = '';
-  createElementDiv(8);
+  rangeOutput(defaultSize);
+  square.textContent = '';
+  createElementDiv(defaultSize);
+  rangePixelSize.value = customRangeValues.indexOf(defaultSize);
 });
 
-// Select size btn and clear canvas and create div //
-
+// Select Size Button
 const selectSizeBtn = document.getElementsByClassName('size-btn');
 
 for (let i = 0; i < selectSizeBtn.length; i++) {
   selectSizeBtn[i].addEventListener(
     'click',
     (setSizeDiv = () => {
-      const selectSizeValue =
-        document.getElementsByClassName('size-span')[i].innerHTML;
-      document.getElementById('square').textContent = '';
+      const selectSizeValue = document.getElementsByClassName('size-span')[i].innerHTML;
+      square.textContent = '';
+      rangeOutput(selectSizeValue);
       createElementDiv(selectSizeValue);
+
+      let selectRangeValue = customRangeValues.filter(value => value === +selectSizeValue);
+      rangePixelSize.value = customRangeValues.indexOf(+selectRangeValue.join());
     })
   );
 }
 
-// Range slider update size //
+// Range slide custom
+const rangeOutput = size => {
+  output.textContent = size + ' x ' + size; //change range output
+};
 
-// // const rangePixelSize = document.querySelector('#range-size');
-// // const output = document.querySelector('.range-output');
-
-// // output.textContent = rangePixelSize.value + ' x ' + rangePixelSize.value;
-
-// // rangePixelSize.addEventListener('input', function() {
-// //   const getRangeValue = rangePixelSize.value;
-// //   output.textContent = rangePixelSize.value + ' x ' + rangePixelSize.value;
-
-// //   document.getElementById('square').textContent = '';
-
-// //   createElementDiv(getRangeValue);
-// // });
-
-// Custom slider range step update size //
 const rangePixelSize = document.querySelector('#range-size');
 const output = document.querySelector('.range-output');
 
 let customRangeValues = [4, 8, 16, 32, 64];
 
-rangePixelSize.oninput = function (e) {
-  output.textContent =
-    customRangeValues[this.value] + ' x ' + customRangeValues[this.value];
-  rangePixelSize.max = customRangeValues.length - 1;
+rangePixelSize.oninput = function () {
+  rangeOutput(customRangeValues[this.value]);
+  // rangePixelSize.max = customRangeValues.length - 1;
 };
 
 rangePixelSize.oninput();
 
 rangePixelSize.addEventListener('input', function () {
   const getRangeValue = customRangeValues[this.value];
-  document.getElementById('square').textContent = '';
+  square.textContent = '';
   createElementDiv(getRangeValue);
 });
 
-// Function drawing
+// Function draw when click
 let colorTrigger = false;
 square.addEventListener('mousedown', () => {
   colorTrigger = true;
 });
 
-// prevent keep mouseup = false after mouseout of square
-// then mouseup and go back to squareDiv
+// prevent keeping mouseup = false after mouseout of square and then mouseup and go back to squareDiv
 const selectBody = document.querySelector('body');
 selectBody.addEventListener('mouseup', () => {
   colorTrigger = false;
 });
 
+// function change background square
 const getSquareDiv = document.getElementsByClassName('square-div');
+
+const drawBg = color => {
+  for (let i = 0; i < getSquareDiv.length; i++) {
+    getSquareDiv[i].addEventListener(
+      'mousedown',
+      (setBackground = () => {
+        getSquareDiv[i].style.backgroundColor = color;
+      })
+    );
+
+    getSquareDiv[i].addEventListener(
+      'mousemove',
+      (setBackground = () => {
+        if (colorTrigger === true) {
+          getSquareDiv[i].style.backgroundColor = color;
+        }
+      })
+    );
+  }
+};
+
 const selectDrawBtn = document.getElementById('draw-btn');
 
-selectDrawBtn.addEventListener(
-  'click',
-  (drawBg = () => {
-    for (let i = 0; i < getSquareDiv.length; i++) {
-      getSquareDiv[i].addEventListener(
-        'mousedown',
-        (setBackground = () => {
-          getSquareDiv[i].style.backgroundColor = 'black';
-        })
-      );
+selectDrawBtn.addEventListener('click', () => {
+  drawBg('black');
+});
 
-      getSquareDiv[i].addEventListener(
-        'mousemove',
-        (setBackground = () => {
-          if (colorTrigger === true) {
-            getSquareDiv[i].style.backgroundColor = 'black';
-          }
-        })
-      );
-    }
-  })
-);
+const eraseBtn = document.getElementById('eraser-btn');
 
-// function Eraser //
-const selectEraserBtn = document.getElementById('eraser-btn');
-selectEraserBtn.addEventListener(
-  'click',
-  (eraseBg = () => {
-    for (let i = 0; i < getSquareDiv.length; i++) {
-      getSquareDiv[i].addEventListener(
-        'mousedown',
-        (setBackground = () => {
-          getSquareDiv[i].style.backgroundColor = '';
-        })
-      );
+eraseBtn.addEventListener('click', () => {
+  drawBg('');
+});
 
-      getSquareDiv[i].addEventListener(
-        'mousemove',
-        (setBackground = () => {
-          if (colorTrigger === true) {
-            getSquareDiv[i].style.backgroundColor = '';
-          }
-        })
-      );
-    }
-  })
-);
-
+// function random color
 const selectRaindowBtn = document.getElementById('rainbow-btn');
 
 selectRaindowBtn.addEventListener(
   'click',
   (rainbowBg = () => {
     for (let i = 0; i < getSquareDiv.length; i++) {
-      const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+      const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
       getSquareDiv[i].addEventListener(
         'mousedown',
         (setBackground = () => {
-          getSquareDiv[i].style.backgroundColor = '#' + randomColor;
+          getSquareDiv[i].style.backgroundColor = randomColor;
         })
       );
 
@@ -160,7 +133,7 @@ selectRaindowBtn.addEventListener(
         'mousemove',
         (setBackground = () => {
           if (colorTrigger === true) {
-            getSquareDiv[i].style.backgroundColor = '#' + randomColor;
+            getSquareDiv[i].style.backgroundColor = randomColor;
           }
         })
       );
