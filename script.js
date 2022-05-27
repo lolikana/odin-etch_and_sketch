@@ -99,29 +99,35 @@ const drawBg = color => {
         }
       })
     );
-    getSquareDiv[i].addEventListener(
-      'touchstart',
-      (setBackground = () => {
-        if (colorTrigger === true) {
-          getSquareDiv[i].style.backgroundColor = color;
-        }
-      })
-    );
-    getSquareDiv[i].addEventListener(
-      'touchmove',
-      (setBackground = () => {
-        if (colorTrigger === true) {
-          getSquareDiv[i].style.backgroundColor = color;
-        }
-      })
-    );
   }
+};
+
+const drawBgOnMobile = color => {
+  getSquareDiv[i].addEventListener(
+    'touchstart',
+    (setBackground = () => {
+      if (colorTrigger === true) {
+        getSquareDiv[i].style.backgroundColor = color;
+      }
+    })
+  );
+  getSquareDiv[i].addEventListener(
+    'touchmove',
+    (setBackground = () => {
+      if (colorTrigger === true) {
+        getSquareDiv[i].style.backgroundColor = color;
+      }
+    })
+  );
 };
 
 const selectDrawBtn = document.getElementById('draw-btn');
 
 selectDrawBtn.addEventListener('click', () => {
   drawBg('black');
+});
+selectDrawBtn.addEventListener('click', () => {
+  drawBgOnMobile('black');
 });
 
 const eraseBtn = document.getElementById('eraser-btn');
