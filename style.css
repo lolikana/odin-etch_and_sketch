@@ -11,8 +11,9 @@
   grid-row-gap: 0;
   border: 1px solid black;
   margin: 20px;
-  padding: 10px;
+  padding: 1rem;
   width: 800px;
+  border-radius: 12px;
 }
 
 .title {
@@ -44,11 +45,64 @@
 }
 
 button {
-  width:90px;
+  cursor: pointer;
+  width: 90px;
+  height: 25px;
+  background: none;
+  border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  /* margin: 0.25em; */
+}
+
+.pulse_black:hover,
+.pulse_black:focus {
+  animation: pulse_black 1s;
+  box-shadow: 0 0 0 2em transparent;
+}
+
+@keyframes pulse_black {
+  0% {
+    box-shadow: 0 0 0 0 black;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+.rainbow-button {
+  width: calc(84px + 6px);
+  height: calc(19px + 6px);
+  background-image: linear-gradient(90deg, #00c0ff 0%, #ffcf00 49%, #fc4f4f 80%, #00c0ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: #000;
+}
+.rainbow-button:after {
+  content: attr(alt);
+  width: 84px;
+  height: 19px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rainbow-button:hover {
+  animation: slidebg 2s linear infinite;
+}
+
+@keyframes slidebg {
+  to {
+    background-position: 20vw;
+  }
 }
 
 .scratch-div {
-  grid-area: 2 / 2 / 3 / 3; 
+  grid-area: 2 / 2 / 3 / 3;
   width: 512px;
   height: 512px;
   display: flex;
@@ -67,5 +121,5 @@ button {
 }
 
 .square-div:hover {
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
 }

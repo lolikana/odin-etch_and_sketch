@@ -1,54 +1,57 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Project JS - Etch & Sketch</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <title>Project JS - Etch & Sketch</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
-</head>
+  <body>
+    <div class="container">
+      <div class="title">
+        <h1>Project JS 3 - Etch & Sketch</h1>
+      </div>
 
-<body>
-
-  <div class="container">
-    <div class="title">
-      <h1>Project JS 3 - Etch & Sketch</h1>
-    </div>
-
-    <div class="btn">
+      <div class="btn">
         <div>
-          <button id="draw-btn" class="btn-set-color ">DRAW</button>
+          <button id="draw-btn" class="btn-set-color pulse_black">DRAW</button>
         </div>
         <div>
-          <button id="rainbow-btn" class="btn-set-color ">RAINBOW</button>
+          <!-- <button id="rainbow-btn" class="btn-set-color pulse_rainbow">RAINBOW</button> -->
+          <a href="#" id="rainbow-btn" class="btn-set-color rainbow-button" alt="rainbow"></a>
         </div>
         <div>
-          <button id="eraser-btn" class="btn-set-color ">ERASER</button>
+          <button id="eraser-btn" class="btn-set-color">ERASER</button>
         </div>
         <div>
           <button id="reset-btn">RESET</button>
         </div>
 
         <div id="div-size-btn">
-            <button class="size-btn"><span class="size-span">16</span> x 16</button>
-            <button class="size-btn"><span class="size-span">32</span> x 32</button>
-            <button class="size-btn"><span class="size-span">64</span> x 64</button>
+          <button class="size-btn"><span class="size-span">8</span> x 8</button>
+          <button class="size-btn"><span class="size-span">32</span> x 32</button>
+          <button class="size-btn"><span class="size-span">64</span> x 64</button>
         </div>
 
         <div id="div-range-size">
           <label for="range-size">Pixel Size</label>
-          <input type="range" id="range-size" name="range-size" min="0" max="4" step="1" value="0">
+          <input
+            type="range"
+            id="range-size"
+            name="range-size"
+            min="0"
+            max="4"
+            step="1"
+            value="2"
+          />
           <output for="range-size" class="range-output"></output>
         </div>
-    </div>
+      </div>
 
-    <div class="scratch-div">
-      <div id="square">
-
+      <div class="scratch-div">
+        <div id="square"></div>
       </div>
     </div>
-  </div>
-
-</body>
-
+  </body>
 </html>
