@@ -99,6 +99,14 @@ const drawBg = color => {
         }
       })
     );
+    getSquareDiv[i].addEventListener(
+      'touchmove',
+      (setBackground = () => {
+        if (colorTrigger === true) {
+          getSquareDiv[i].style.backgroundColor = color;
+        }
+      })
+    );
   }
 };
 
