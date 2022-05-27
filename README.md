@@ -14,7 +14,7 @@ Memo :
 - [ ] none
 
 Extra :
-- [ ] none
+- [ ] add function to draw on mobile with <code>touchmove</code> (must prevent the dragging)
 
 Credits :
 
