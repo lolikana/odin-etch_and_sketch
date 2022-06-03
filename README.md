@@ -6,7 +6,7 @@
 
 #### Project : Etch and Sketch
 
-<a href="odin-etch-and-sketch.vercel.app" target="_blank">Live Preview</a> with Vercel.
+<a href="https://odin-etch-and-sketch.vercel.app/" target="_blank">Live Preview</a> with Vercel.
 
 Second javascript project: HTML, CSS, JS
 
