@@ -55,6 +55,10 @@ button {
   /* margin: 0.25em; */
 }
 
+button:target {
+  background-color: red;
+}
+
 .pulse_black:hover,
 .pulse_black:focus {
   animation: pulse_black 1s;

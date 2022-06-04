@@ -86,14 +86,14 @@ const drawBg = color => {
   for (let i = 0; i < getSquareDiv.length; i++) {
     getSquareDiv[i].addEventListener(
       'mousedown',
-      (setBackground = () => {
+      (setBackground = event => {
         getSquareDiv[i].style.backgroundColor = color;
       })
     );
 
     getSquareDiv[i].addEventListener(
       'mousemove',
-      (setBackground = () => {
+      (setBackground = event => {
         if (colorTrigger === true) {
           getSquareDiv[i].style.backgroundColor = color;
         }
@@ -102,10 +102,17 @@ const drawBg = color => {
   }
 };
 
+const inputColorPicker = document.getElementById('colorPicker');
+setColor();
+inputColorPicker.addEventListener('input', setColor);
+function setColor () {
+  return inputColorPicker.value;
+};
+
 const selectDrawBtn = document.getElementById('draw-btn');
 
 selectDrawBtn.addEventListener('click', () => {
-  drawBg('black');
+  drawBg(setColor());
 });
 
 const eraseBtn = document.getElementById('eraser-btn');
