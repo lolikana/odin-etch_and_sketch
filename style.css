@@ -71,11 +71,8 @@ button:target {
   }
 }
 
-a {
-  color: #000;
-}
-
 .rainbow-button {
+  text-decoration: none;
   width: calc(84px + 6px);
   height: calc(19px + 6px);
   background-image: linear-gradient(90deg, #00c0ff 0%, #ffcf00 49%, #fc4f4f 80%, #00c0ff 100%);
@@ -129,7 +126,8 @@ a {
 }
 
 #copyright {
-  grid-area: 3 / 1 / 3 / 3; 
+  color: #000;
+  grid-area: 3 / 1 / 3 / 3;
   text-align: center;
   margin: 1rem;
 }
