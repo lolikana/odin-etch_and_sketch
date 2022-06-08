@@ -25,6 +25,7 @@ selectClearBtn.addEventListener('click', function () {
   createElementDiv(defaultSize);
   rangePixelSize.value = customRangeValues.indexOf(defaultSize);
   drawBg('black');
+  inputColorPicker.value = 'black';
 });
 
 // Select Size Button
@@ -103,9 +104,17 @@ const drawBg = color => {
   }
 };
 
-const selectDrawBtn = document.getElementById('draw-btn');
+// Color picker
+const inputColorPicker = document.getElementById('colorPicker');
+setColor();
+inputColorPicker.addEventListener('input', setColor);
+function setColor() {
+  return drawBg(inputColorPicker.value);
+}
 
-selectDrawBtn.addEventListener('click', () => {
+const selectBlackBtn = document.getElementById('black-btn');
+
+selectBlackBtn.addEventListener('click', () => {
   drawBg('black');
 });
 
