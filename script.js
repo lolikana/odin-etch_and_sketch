@@ -24,6 +24,7 @@ selectClearBtn.addEventListener('click', function () {
   square.textContent = '';
   createElementDiv(defaultSize);
   rangePixelSize.value = customRangeValues.indexOf(defaultSize);
+  drawBg('black');
 });
 
 // Select Size Button
@@ -45,14 +46,13 @@ for (let i = 0; i < selectSizeBtn.length; i++) {
 }
 
 // Range slide custom
+const rangePixelSize = document.querySelector('#range-size');
+const output = document.querySelector('.range-output');
+let customRangeValues = [4, 8, 16, 32, 64];
+
 const rangeOutput = size => {
   output.textContent = size + ' x ' + size; //change range output
 };
-
-const rangePixelSize = document.querySelector('#range-size');
-const output = document.querySelector('.range-output');
-
-let customRangeValues = [4, 8, 16, 32, 64];
 
 rangePixelSize.oninput = function () {
   rangeOutput(customRangeValues[this.value]);
@@ -84,10 +84,11 @@ const getSquareDiv = document.getElementsByClassName('square-div');
 
 const drawBg = color => {
   for (let i = 0; i < getSquareDiv.length; i++) {
+    selectedColor = color;
     getSquareDiv[i].addEventListener(
       'mousedown',
       (setBackground = () => {
-        getSquareDiv[i].style.backgroundColor = color;
+        getSquareDiv[i].style.backgroundColor = selectedColor;
       })
     );
 
@@ -95,7 +96,7 @@ const drawBg = color => {
       'mousemove',
       (setBackground = () => {
         if (colorTrigger === true) {
-          getSquareDiv[i].style.backgroundColor = color;
+          getSquareDiv[i].style.backgroundColor = selectedColor;
         }
       })
     );
